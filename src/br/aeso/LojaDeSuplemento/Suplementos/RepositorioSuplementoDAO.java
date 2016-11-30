@@ -10,7 +10,7 @@ import br.aeso.LojaDeSuplemento.Suplementos.Suplemento;
 import br.aeso.LojaDeSuplemento.Fornecedor.Fornecedor;
 import br.aeso.LojaDeSuplemento.JDBC.ConnectionFactory;
 
-public abstract class RepositorioSuplementoDAO implements IRepositorioSuplemento {
+public class RepositorioSuplementoDAO implements IRepositorioSuplemento {
 	private Connection connection;
 
 	public RepositorioSuplementoDAO() {

@@ -53,7 +53,7 @@ public class ControladorSuplemento {
 		suplemento = this.repositorioSuplemento.listar();
 
 		for (Suplemento suplementos : suplemento) {
-			suplementos.set(suplementos.lastIndexOf(suplemento), this.procurar(suplemento.getId()));
+			suplemento.set(suplemento.lastIndexOf(suplemento), this.procurar(suplementos.getId()));
 		}
 
 		return suplemento;
@@ -65,7 +65,7 @@ public class ControladorSuplemento {
 		suplementos = this.repositorioSuplemento.listarPorFornecedor(cnpj);
 
 		for (Suplemento suplemento : suplementos) {
-			suplemento.set(suplemento.lastIndexOf(suplemento), this.procurar(suplemento.getId()));
+			suplementos.set(suplementos.lastIndexOf(suplemento), this.procurar(suplemento.getId()));
 		}
 
 		return suplementos;

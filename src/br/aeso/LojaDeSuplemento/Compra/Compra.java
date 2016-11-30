@@ -13,16 +13,16 @@ import br.aeso.LojaDeSuplemento.Produtos.Produtos;
 public class Compra {
 	private int id;
 	private double preco;
-	private Calendar date;
+	private Date date;
 	private ArrayList<Suplemento> suplementos;
 	private Cliente cliente;
-	private Date data;
+	private Calendar data;
 	private Cupom cupom;
 	private int flag;
 	
 public Compra (int id, Calendar data, Cliente cliente){
 	this.id = id;
-	this.date = Calendar.getInstance();
+	this.date = Calendar.getInstance().getTime();
 	this.cliente = cliente;
 	this.suplementos = new ArrayList<Suplemento>();
 	this.date = new Date();
@@ -31,7 +31,7 @@ public Compra (int id, Calendar data, Cliente cliente){
 
 public Compra (){
 	this.suplementos = new ArrayList<Suplemento>();
-	this.date = Calendar.getInstance();
+	this.date = Calendar.getInstance().getTime();
 	this.date = new Date();
 	this.setData();
 	this.cupom = new Cupom();
@@ -41,7 +41,7 @@ public int getId(){
 	return id;
 }
 
-public void setId(){
+public void setId(int id){
 	this.id = id;
 }
 
@@ -49,8 +49,12 @@ public Calendar getData(){
 	return data;
 }
 
-public void setData(){
-	this.date.setTime(date);
+public void setData() {
+	this.data.setTime(date);
+}
+
+public void setData(Calendar data) {
+	this.data = data;
 }
 
 public ArrayList<Suplemento> getSuplementos(){
@@ -98,8 +102,8 @@ public String dataFormatada() {
 public String retornaSuplementos() {
 	String listaSuplementos = "";
 	for (Suplemento suplemento : suplementos) {
-		listaSuplementos = listaSuplementos + suplementos.getId() + "\t" + suplementos.getNome()
-				+ "\tR$ " + suplementos.getPrecoVenda() + "\n";
+		listaSuplementos = listaSuplementos + suplemento.getId() + "\t" + suplemento.getNome()
+				+ "\tR$ " + suplemento.getPrecoVenda() + "\n";
 	}
 	return listaSuplementos;
 }

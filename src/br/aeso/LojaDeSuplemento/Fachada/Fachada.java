@@ -127,11 +127,11 @@ public class Fachada {
 		return this.controladorSuplemento.procurar(id);
 	}
 
-	public ArrayList<Suplemento> listaFilme() {
+	public ArrayList<Suplemento> listaSuplemento() {
 		return this.controladorSuplemento.listar();
 	}
 
-	public ArrayList<Suplemento> listaFilmePorFornecedor(String cnpj) {
+	public ArrayList<Suplemento> listaSuplementoPorFornecedor(String cnpj) {
 		return this.controladorSuplemento.listarPorFornecedor(cnpj);
 	}
 

@@ -68,13 +68,10 @@ public class TelaCliente extends JFrame {
 	private JComboBox estadoComboBox;
 	private boolean enabled;
 	Fachada fachada;
-	private JTable tabelaAluguel;
 	private DefaultTableModel comprasDefaultTableModel;
-	private DefaultTableModel aluguelDefaultTableModel;
-	private JTable tabelaJogos;
-	private DefaultTableModel jogosDefaultTable;
-	private DefaultTableModel filmesDefaultTable;
-	private JTable tabelaFilmes;
+	private JTable tabelaSuplementos;
+	private JTable painelSuplemento;
+	private DefaultTableModel suplementosDefaultTable;
 
 	public TelaCliente() {
 		start();
@@ -376,111 +373,44 @@ public class TelaCliente extends JFrame {
 		tabelaCompras.setModel(comprasDefaultTableModel);
 		scrollTabelaCompras.setViewportView(tabelaCompras);
 
-		JPanel painelAluguel = new JPanel();
-		painelTabs.addTab("Alugueis", null, painelAluguel, null);
-		painelAluguel.setLayout(null);
-
-		JScrollPane scrollTabelaAluguel = new JScrollPane();
-		scrollTabelaAluguel.setBounds(12, 12, 788, 323);
-		painelAluguel.add(scrollTabelaAluguel);
-
-		tabelaAluguel = new JTable();
-		tabelaAluguel.addMouseListener(new MouseAdapter() {
-		});
-		
-		aluguelDefaultTableModel = new DefaultTableModel(new Object[][] { {
-				null, null, null }, }, new String[] { "Id", "Data de alguel",
-				"Data de devolu\u00E7\u00E3o", "Preço" });
-		tabelaAluguel.setModel(aluguelDefaultTableModel);
-		tabelaAluguel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		scrollTabelaAluguel.setViewportView(tabelaAluguel);
-
-		JPanel painelJogos = new JPanel();
-		painelTabs.addTab("Suplementos", null, painelJogos, null);
-		painelJogos.setLayout(null);
-
 		JScrollPane scrollTabelaSuplemento = new JScrollPane();
 		scrollTabelaSuplemento.setBounds(12, 12, 788, 323);
-		painelJogos.add(scrollTabelaSuplemento);
+		painelSuplemento.add(scrollTabelaSuplemento);
 
-		tabelaSuplemento = new JTable();
-		tabelaSuplemento.addMouseListener(new MouseAdapter() {
+		tabelaSuplementos = new JTable();
+		tabelaSuplementos.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaProdutoCliente telaProduto = new TelaProdutoCliente();
-				telaProduto.setSuplemento((Integer) tabelaJogos.getValueAt(
-						tabelaJogos.getSelectedRow(), 0));
+				telaProduto.setSuplemento((Integer) tabelaSuplementos.getValueAt(
+						tabelaSuplementos.getSelectedRow(), 0));
 				telaProduto.setVisible(true);
 			}
 		});
-		jogosDefaultTable = new DefaultTableModel(new Object[][] {},
+		suplementosDefaultTable = new DefaultTableModel(new Object[][] {},
 				new String[] { "Id", "Nome", "Fornecedor", "Desenvolvedor",
 						"Nota", "Classifica\u00E7\u00E3o", "G\u00EAnero",
 						"Devolu\u00E7\u00E3o", "Data de lan\u00E7amento" });
-		tabelaJogos.setModel(jogosDefaultTable);
-		tabelaJogos.getColumnModel().getColumn(0).setResizable(false);
-		tabelaJogos.getColumnModel().getColumn(0).setPreferredWidth(25);
-		tabelaJogos.getColumnModel().getColumn(1).setResizable(false);
-		tabelaJogos.getColumnModel().getColumn(1).setPreferredWidth(86);
-		tabelaJogos.getColumnModel().getColumn(2).setResizable(false);
-		tabelaJogos.getColumnModel().getColumn(2).setPreferredWidth(115);
-		tabelaJogos.getColumnModel().getColumn(3).setResizable(false);
-		tabelaJogos.getColumnModel().getColumn(3).setPreferredWidth(107);
-		tabelaJogos.getColumnModel().getColumn(4).setResizable(false);
-		tabelaJogos.getColumnModel().getColumn(4).setPreferredWidth(35);
-		tabelaJogos.getColumnModel().getColumn(5).setResizable(false);
-		tabelaJogos.getColumnModel().getColumn(5).setPreferredWidth(85);
-		tabelaJogos.getColumnModel().getColumn(6).setResizable(false);
-		tabelaJogos.getColumnModel().getColumn(6).setPreferredWidth(57);
-		tabelaJogos.getColumnModel().getColumn(7).setResizable(false);
-		tabelaJogos.getColumnModel().getColumn(7).setPreferredWidth(72);
-		tabelaJogos.getColumnModel().getColumn(8).setResizable(false);
-		tabelaJogos.getColumnModel().getColumn(8).setPreferredWidth(113);
-		scrollTabelaJogos.setViewportView(tabelaJogos);
-
-		JPanel painelFilmes = new JPanel();
-		painelTabs.addTab("Filmes", null, painelFilmes, null);
-		painelFilmes.setLayout(null);
-
-		JScrollPane scrollPaneFilmes = new JScrollPane();
-		scrollPaneFilmes.setBounds(12, 12, 788, 323);
-		painelFilmes.add(scrollPaneFilmes);
-
-		tabelaFilmes = new JTable();
-		tabelaFilmes.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				TelaProdutoCliente telaProduto = new TelaProdutoCliente();
-				telaProduto.setFilme((Integer) tabelaFilmes.getValueAt(
-						tabelaFilmes.getSelectedRow(), 0));
-				telaProduto.setVisible(true);
-			}
-		});
-
-		filmesDefaultTable = new DefaultTableModel(new Object[][] {},
-				new String[] { "Id", "Nome", "Fornecedor", "Diretor", "Nota",
-						"Classifica\u00E7\u00E3o", "G\u00EAnero",
-						"Devolu\u00E7\u00E3o", "Data de lan\u00E7amento" });
-		tabelaFilmes.setModel(filmesDefaultTable);
-		tabelaFilmes.getColumnModel().getColumn(0).setResizable(false);
-		tabelaFilmes.getColumnModel().getColumn(0).setPreferredWidth(25);
-		tabelaFilmes.getColumnModel().getColumn(1).setResizable(false);
-		tabelaFilmes.getColumnModel().getColumn(1).setPreferredWidth(86);
-		tabelaFilmes.getColumnModel().getColumn(2).setResizable(false);
-		tabelaFilmes.getColumnModel().getColumn(2).setPreferredWidth(115);
-		tabelaFilmes.getColumnModel().getColumn(3).setResizable(false);
-		tabelaFilmes.getColumnModel().getColumn(3).setPreferredWidth(107);
-		tabelaFilmes.getColumnModel().getColumn(4).setResizable(false);
-		tabelaFilmes.getColumnModel().getColumn(4).setPreferredWidth(35);
-		tabelaFilmes.getColumnModel().getColumn(5).setResizable(false);
-		tabelaFilmes.getColumnModel().getColumn(5).setPreferredWidth(85);
-		tabelaFilmes.getColumnModel().getColumn(6).setResizable(false);
-		tabelaFilmes.getColumnModel().getColumn(6).setPreferredWidth(57);
-		tabelaFilmes.getColumnModel().getColumn(7).setResizable(false);
-		tabelaFilmes.getColumnModel().getColumn(7).setPreferredWidth(72);
-		tabelaFilmes.getColumnModel().getColumn(8).setResizable(false);
-		tabelaFilmes.getColumnModel().getColumn(8).setPreferredWidth(113);
-		scrollPaneFilmes.setViewportView(tabelaFilmes);
+		tabelaSuplementos.setModel(suplementosDefaultTable);
+		tabelaSuplementos.getColumnModel().getColumn(0).setResizable(false);
+		tabelaSuplementos.getColumnModel().getColumn(0).setPreferredWidth(25);
+		tabelaSuplementos.getColumnModel().getColumn(1).setResizable(false);
+		tabelaSuplementos.getColumnModel().getColumn(1).setPreferredWidth(86);
+		tabelaSuplementos.getColumnModel().getColumn(2).setResizable(false);
+		tabelaSuplementos.getColumnModel().getColumn(2).setPreferredWidth(115);
+		tabelaSuplementos.getColumnModel().getColumn(3).setResizable(false);
+		tabelaSuplementos.getColumnModel().getColumn(3).setPreferredWidth(107);
+		tabelaSuplementos.getColumnModel().getColumn(4).setResizable(false);
+		tabelaSuplementos.getColumnModel().getColumn(4).setPreferredWidth(35);
+		tabelaSuplementos.getColumnModel().getColumn(5).setResizable(false);
+		tabelaSuplementos.getColumnModel().getColumn(5).setPreferredWidth(85);
+		tabelaSuplementos.getColumnModel().getColumn(6).setResizable(false);
+		tabelaSuplementos.getColumnModel().getColumn(6).setPreferredWidth(57);
+		tabelaSuplementos.getColumnModel().getColumn(7).setResizable(false);
+		tabelaSuplementos.getColumnModel().getColumn(7).setPreferredWidth(72);
+		tabelaSuplementos.getColumnModel().getColumn(8).setResizable(false);
+		tabelaSuplementos.getColumnModel().getColumn(8).setPreferredWidth(113);
+		scrollTabelaSuplemento.setViewportView(tabelaSuplementos);
 
 		JButton button = new JButton("Loja");
 		button.addActionListener(new ActionListener() {
@@ -624,113 +554,23 @@ public class TelaCliente extends JFrame {
 			comprasDefaultTableModel.addRow(vector);
 		}
 	}
-
-	public void listarAluguel(String cpf) {
-		aluguelDefaultTableModel.setNumRows(0);
-
-		ArrayList<Aluguel> lista = fachada.listaAluguelPorCliente(cpf);
-		for (Aluguel aluguel : lista) {
-			Vector vector = new Vector();
-			vector.add(aluguel.getId());
-			vector.add(aluguel.dataFormatada());
-			vector.add(aluguel.dataDevolucaoFormatada());
-			vector.add(aluguel.getPrecoFormatado());
-			aluguelDefaultTableModel.addRow(vector);
-		}
-	}
-
-	public void listarJogos(String cpf) {
-		jogosDefaultTable.setNumRows(0);
+	
+	public void listarSuplementos(String cpf) {
+		suplementosDefaultTable.setNumRows(0);
 
 		ArrayList<Compra> listaCompra = fachada.listaCompraPorCliente(cpf);
-		ArrayList<Aluguel> listaAluguel = fachada.listaAluguelPorCliente(cpf);
 
 		if (!listaCompra.isEmpty()) {
 			for (Compra compra : listaCompra) {
 
-				if (!compra.getJogos().isEmpty()) {
-					for (Jogo jogo : compra.getJogos()) {
+				if (!compra.getSuplementos().isEmpty()) {
+					for (Suplemento suplementos : compra.getSuplementos()) {
 						Vector vector = new Vector();
-						vector.add(jogo.getId());
-						vector.add(jogo.getNome());
-						vector.add(jogo.getFornecedor().getNomeFantasia());
-						vector.add(jogo.getDesenvolvedor());
-						vector.add(jogo.getNota());
-						vector.add(jogo.getClassificacao());
-						vector.add(jogo.getGenero().getNome());
+						vector.add(suplementos.getId());
+						vector.add(suplementos.getNome());
+						vector.add(suplementos.getFornecedor().getNomeFantasia());
 						vector.add("-");
-						vector.add(jogo.getDataFormatada());
-						jogosDefaultTable.addRow(vector);
-					}
-				}
-			}
-		}
-
-		if (!listaAluguel.isEmpty()) {
-
-			for (Aluguel aluguel : listaAluguel) {
-				if (!aluguel.getJogo().isEmpty()) {
-					for (Jogo jogo : aluguel.getJogo()) {
-						Vector vector = new Vector();
-						vector.add(jogo.getId());
-						vector.add(jogo.getNome());
-						vector.add(jogo.getFornecedor().getNomeFantasia());
-						vector.add(jogo.getDesenvolvedor());
-						vector.add(jogo.getNota());
-						vector.add(jogo.getClassificacao());
-						vector.add(jogo.getGenero().getNome());
-						vector.add(aluguel.dataDevolucaoFormatada());
-						vector.add(jogo.getDataFormatada());
-						jogosDefaultTable.addRow(vector);
-					}
-				}
-			}
-		}
-	}
-
-	public void listarFilmes(String cpf) {
-		jogosDefaultTable.setNumRows(0);
-
-		ArrayList<Compra> listaCompra = fachada.listaCompraPorCliente(cpf);
-		ArrayList<Aluguel> listaAluguel = fachada.listaAluguelPorCliente(cpf);
-
-		if (!listaCompra.isEmpty()) {
-			for (Compra compra : listaCompra) {
-
-				if (!compra.getFilmes().isEmpty()) {
-					for (Filme filme : compra.getFilmes()) {
-						Vector vector = new Vector();
-						vector.add(filme.getId());
-						vector.add(filme.getNome());
-						vector.add(filme.getFornecedor().getNomeFantasia());
-						vector.add(filme.getDiretor());
-						vector.add(filme.getNota());
-						vector.add(filme.getClassificacao());
-						vector.add(filme.getGenero().getNome());
-						vector.add("-");
-						vector.add(filme.getDataFormatada());
-						filmesDefaultTable.addRow(vector);
-					}
-				}
-			}
-		}
-
-		if (!listaAluguel.isEmpty()) {
-
-			for (Aluguel aluguel : listaAluguel) {
-				if (!aluguel.getFilme().isEmpty()) {
-					for (Filme filme : aluguel.getFilme()) {
-						Vector vector = new Vector();
-						vector.add(filme.getId());
-						vector.add(filme.getNome());
-						vector.add(filme.getFornecedor().getNomeFantasia());
-						vector.add(filme.getDiretor());
-						vector.add(filme.getNota());
-						vector.add(filme.getClassificacao());
-						vector.add(filme.getGenero().getNome());
-						vector.add(aluguel.dataDevolucaoFormatada());
-						vector.add(filme.getDataFormatada());
-						filmesDefaultTable.addRow(vector);
+						suplementosDefaultTable.addRow(vector);
 					}
 				}
 			}

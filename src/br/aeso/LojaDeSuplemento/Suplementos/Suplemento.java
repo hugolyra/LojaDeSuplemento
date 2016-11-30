@@ -39,6 +39,7 @@ public class Suplemento extends Produtos {
 				+ "\nDesenvolvido por " + fabricante;
 	}
 
+
 	
 
 }

@@ -70,7 +70,7 @@ public class RepositorioCompraDAO implements IRepositorioCompra {
 			PreparedStatement stmt1 = connection.prepareStatement(sql1);
 			
 			// seta os valores
-			for (Suplemento suplemento : compra.getSuplemento()) {
+			for (Suplemento suplemento : compra.getSuplementos()) {
 				stmt1.setInt(1, compra.getId());
 				stmt1.setInt(2, suplemento.getId());
 				stmt1.execute();
@@ -232,7 +232,7 @@ public class RepositorioCompraDAO implements IRepositorioCompra {
 			while (rs1.next()) {
 				Suplemento suplemento = new Suplemento();
 				suplemento.setId(rs1.getInt("idSuplemento"));
-				compra.setSuplemento(suplemento);
+				compra.setSuplementos(suplemento);
 			}
 			stmt1.close();
 			rs1.close();

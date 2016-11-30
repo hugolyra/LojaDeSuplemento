@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import br.aeso.Steamflix.JDBC.ConnectionFactory;
+import br.aeso.LojaDeSuplemento.JDBC.ConnectionFactory;
 
 public class RepositorioCupomDAO implements IRepositorioCupom {
 
@@ -20,7 +20,7 @@ public class RepositorioCupomDAO implements IRepositorioCupom {
 	public void cadastrar(Cupom cupom) {
 		// TODO Auto-generated method stub
 		int codigo = 0;
-		String sql = "insert into Steamflix.Cupom " + "(nomeCupom,valorCupom,flagCupom)"
+		String sql = "insert into LojaDeSuplemento.Cupom " + "(nomeCupom,valorCupom,flagCupom)"
 				+ "values (?,?,?)";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql,
@@ -50,7 +50,7 @@ public class RepositorioCupomDAO implements IRepositorioCupom {
 	@Override
 	public void atualizar(Cupom cupom) {
 		// TODO Auto-generated method stub
-		String sql = "update Steamflix.Cupom set nomeCupom=? , valorCupom=? where idCupom = ?";
+		String sql = "update LojaDeSuplemento.Cupom set nomeCupom=? , valorCupom=? where idCupom = ?";
 		try {
 			// prepared statement para inserção
 			PreparedStatement stmt = connection.prepareStatement(sql);
@@ -72,7 +72,7 @@ public class RepositorioCupomDAO implements IRepositorioCupom {
 		// TODO Auto-generated method stub
 		try {
 			PreparedStatement stmt = connection
-					.prepareStatement("update Steamflix.Cupom set flagCupom = ? where idCupom =?");
+					.prepareStatement("update LojaDeSuplemento.Cupom set flagCupom = ? where idCupom =?");
 			stmt.setInt(1, 0);
 			stmt.setInt(2, id);
 			stmt.executeUpdate();
@@ -86,7 +86,7 @@ public class RepositorioCupomDAO implements IRepositorioCupom {
 	public Cupom procurar(int id) {
 		// TODO Auto-generated method stub
 		Cupom cupomProcurado = null;
-		String sql = "select * from Steamflix.Cupom where idCupom = ? and flagCupom = 1";
+		String sql = "select * from LojaDeSuplemento.Cupom where idCupom = ? and flagCupom = 1";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, id);
@@ -119,7 +119,7 @@ public class RepositorioCupomDAO implements IRepositorioCupom {
 		try {
 			ArrayList<Cupom> cupoms = new ArrayList<Cupom>();
 			PreparedStatement stmt = this.connection
-					.prepareStatement("select * from  Steamflix.Cupom where flagCupom = 1");
+					.prepareStatement("select * from  LojaDeSuplemento.Cupom where flagCupom = 1");
 
 			ResultSet rs = stmt.executeQuery();
 
